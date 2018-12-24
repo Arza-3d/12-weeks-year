@@ -11,20 +11,46 @@
       html, body {
         background-color:#888;
       }
+
+      .twelve-weeks-r3 {
+        border: thin solid black;
+        border-radius: 8px;
+        padding: 12px;
+        display: table;
+        float: left;
+        margin: 5px;
+      }
+
+      hr {
+        border-color: black;
+      }
     </style>
   </head>
   <body>
     <div>
-      <h1>time counter for 12 weeks year</h1>
+      <h1 style="text-align: center">time counter for 12 weeks year</h1>
 
       <hr>
-      <p>Insert your starting date of 12 weeks year: <input type="date" id="start-date-12weeksyear-r3" onfocus="(this.type='date')" onchange="alert('dfdf')"></p>
-      <div class="twelve-weeks-r3">
+      <!--
+      <p>Insert your starting date of 12 weeks year: <input type="date" id="start-date-12weeksyear-r3" onfocus="(this.type='date')" onchange="show12WeeksYearTime(this.value)"></p>
+    -->
+      <div><!-- style="display:flex; justify-content: space-evenly;">-->
+        <div class="twelve-weeks-r3" data-start-date-r3="2018-12-8" data-12weeks-owner-r3="Arza.3d">
 
+        </div>
+
+        <div class="twelve-weeks-r3"  data-start-date-r3="2018-12-19" data-12weeks-owner-r3="FalconEchoOne">
+
+        </div>
+
+        <div class="twelve-weeks-r3"  data-start-date-r3="2018-12-24" data-12weeks-owner-r3="Tidus_7">
+
+        </div>
       </div>
+
     </div>
 
-    <script src="ar3-12-weeks-counter-mobile-EN.js">
+    <script src="ar3-12-weeks-counter-sessions-EN.js">
 
     </script>
   </body>

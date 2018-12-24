@@ -19,15 +19,12 @@ https://arza-3d.github.io/ar3.js/
    $("#start-date-12weeksyear-r3").attr("placeholder", 1);
 
 
-  function show12WeeksYearTime(startDate) {
+  function show12WeeksYearTime() {
 
       let $target12 = $('.twelve-weeks-r3'); // class name to set
-      let date0 = startDate; // start date attribute to set
-      //let thisAddress = $target12.attr('data-site-base-r3');
 
-      // emptying
-      $target12[0].innerHTML = '';
-
+      for (let h = 0; h < $target12.length; h++) {
+        let date0 = $($target12[h]).attr('data-start-date-r3');
 
         function countDate(dayAddition = 1, startDate = date0) {
           let dateStart = new Date(startDate);
@@ -37,7 +34,7 @@ https://arza-3d.github.io/ar3.js/
         }
         let dateLine = countDate(7*12);
 
-        $target12.append(
+        $($target12[h]).append(
           '<table class="blank-2-r3">\n' +
             ' <tbody class="r3-build-box-here">\n' +
             ' </tbody>\n' +
@@ -46,7 +43,7 @@ https://arza-3d.github.io/ar3.js/
 
         let dayCount = Math.ceil((Date.now() - new Date(date0))/(1000*60*60*24));
         // 1. make 7 X 12 small boxes that represent days
-        let $boxTarget = $target12.find('.r3-build-box-here');
+        let $boxTarget = $($target12[h]).find('.r3-build-box-here');
         {
           for (let i = 0; i < 7; i++) {
             $boxTarget.append('<tr>');
@@ -71,6 +68,7 @@ https://arza-3d.github.io/ar3.js/
               }
             }
 
+            /*
             let daylyProgressReportAddress;
             if (i < dayCount) {
               daylyProgressReportAddress = 'href="https://raw.githack.com/Arza-3d/docs/master/12_weeks_year/'+date0+
@@ -78,6 +76,7 @@ https://arza-3d.github.io/ar3.js/
             } else {
               daylyProgressReportAddress = 'href="#"';
             }
+            */
             $theTarget.append(
               '<td>\n'+
               //' <a '+ daylyProgressReportAddress +'>\n'+
@@ -91,7 +90,8 @@ https://arza-3d.github.io/ar3.js/
         }
 
         // 2. show starting day date
-        $target12.prepend(
+        $($target12[h]).prepend(
+          '<h1>'+ $($target12[h]).attr('data-12weeks-owner-r3') +'</h1>' +
           '<div style="font-size:12px">started at <b>'+ new Date(date0).toDateString() +'</b></div>\n'
         );
 
@@ -105,26 +105,33 @@ https://arza-3d.github.io/ar3.js/
           let timeLost = Date.now() - new Date(date0);
           let hourLost = Math.round(timeLost / (1000*3600));
 
-          $target12.append(
+          $($target12[h]).append(
+
             '<div style="font-size:12px">\n'+
               'THE DATELINE is <b>'+ dateLine.toDateString() +'</b>!! <big>😠</big>\n'+
             '</div>\n'+
             '<div style="font-size:12px;">\n'+
-              '<br>TIME LEFT IS <b style="color:#e34336;"><big><big>' +
+              '<br>TIME LEFT IS <b style="color:#e34336; background-color: black; padding: 4px; border-radius: 8px"><big><big>' +
               wakeHoursBeforeDeadline + ' HOURS ' +
               wakeHoursToMinutes + ' MINUTES </big></big></b>'+
               '!!!<big><big>😠</big></big><br>\n'+
-              'Time lost <big style="color:#e34336;"><b>' + hourLost +' hours </b></big> !!!\n' +
+              '<br>Time lost <big style="color:#e34336;  background-color: black; padding: 4px; border-radius: 8px""><b>' + hourLost +' hours </b></big> !!!\n' +
             '</div>\n'
           );
         }
+      }
+      // emptying
+      //$target12.html('');// = '';
+
+
+
 
 
 
 
 
   }
-
+  show12WeeksYearTime();
   $('head').append(
     '<style>' +
 
